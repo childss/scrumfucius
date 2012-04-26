@@ -8,7 +8,7 @@ if [ $? -ne 0 ]
 	then echo "build failed!";exit -1
 fi
 
-cp story.txt /Volumes/AGILE\ BLUE/
+cp -r story /Volumes/AGILE\ BLUE/
 cp classproject.jar  /Volumes/AGILE\ BLUE/
 cp scrumfucius  /Volumes/AGILE\ BLUE/
 

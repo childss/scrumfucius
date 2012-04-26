@@ -25,7 +25,7 @@ public class HelloWorldTest {
 
     @Test
     public void testReadsATextFile() {
-        File textFile = new File("dummy.txt");
+        File textFile = new File("story/dummy.txt");
         try {
             String output = HelloWorld.readFile(textFile);
             assertEquals("this is some example text", output);
@@ -54,7 +54,7 @@ public class HelloWorldTest {
         System.setOut(new PrintStream(output));
 
         try {
-            HelloWorld.runProgram("story.txt", input);
+            HelloWorld.runProgram("story/story.txt", input);
             assertTrue(output.toString().endsWith("story 1\n"));
         } catch (IOException e) {
             fail("exception: " + e.getMessage());

@@ -20,7 +20,7 @@ public class HelloWorld {
             System.out.println("Invalid selection: '" + userInput + "'");
             return;
         }
-        File file = new File(userInput + ".txt");
+        File file = new File("story/" + userInput + ".txt");
         readAndPrintFile(file);
     }
 
