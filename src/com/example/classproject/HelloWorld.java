@@ -16,7 +16,7 @@ public class HelloWorld {
 
         System.out.print("Please type your selection: ");
         String userInput = readInput(userInputStream);
-        File file = new File(userInput + ".txt");
+        File file = new File("story/" + userInput + ".txt");
         readAndPrintFile(file);
     }
 
