@@ -7,15 +7,20 @@ public class HelloWorld {
     static String _tale;
 
 	public static void main(String[] args) throws IOException {
-        String filename = args[0];
+        runProgram(args[0], System.in);
+	}
+
+    public static void runProgram(String filename, InputStream userInputStream) throws IOException {
         File storyFile = new File(filename);
 
         readFile(storyFile);
-		System.out.print(_tale);
+        System.out.print(_tale);
         System.out.println();
-	}
 
-    public static String readFile(File inputFile) throws FileNotFoundException, IOException {
+        String userInput = readInput(userInputStream);
+    }
+
+    public static String readFile(File inputFile) throws IOException {
         if (!inputFile.exists()) { throw new FileNotFoundException(); }
 
         FileReader fileReader = new FileReader(inputFile);
@@ -25,4 +30,7 @@ public class HelloWorld {
         return _tale;
     }
 
+    public static String readInput(InputStream input) throws IOException {
+        return new BufferedReader(new InputStreamReader(input)).readLine();
+    }
 }

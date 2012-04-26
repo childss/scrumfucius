@@ -43,12 +43,28 @@ public class HelloWorldTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
 
+        String inputData = "something";
+        ByteArrayInputStream input = new ByteArrayInputStream(inputData.getBytes());
+
         try {
-            HelloWorld.main(args);
+            HelloWorld.runProgram(args[0], input);
             assertEquals("this is some example text\n", output.toString());
         } catch (Exception e) {
             fail(e.getMessage());
         }
     }
 
+    @Test
+    public void canReadInputFromStream() {
+        String inputData = "something";
+        ByteArrayInputStream input = new ByteArrayInputStream(inputData.getBytes());
+
+        try {
+            String result = HelloWorld.readInput(input);
+            assertEquals("something", result);
+        } catch (Exception e) {
+            fail("exception" + e.getMessage());
+        }
+
+    }
 }
