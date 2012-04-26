@@ -6,9 +6,9 @@ public class HelloWorld {
 
     static String _tale;
 
-	public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         runProgram(args[0], System.in);
-	}
+    }
 
     public static void runProgram(String filename, InputStream userInputStream) throws IOException {
         File storyFile = new File(filename);
@@ -16,6 +16,10 @@ public class HelloWorld {
 
         System.out.print("Please type your selection: ");
         String userInput = readInput(userInputStream);
+        if (!validateInput(userInput)) {
+            System.out.println("Invalid selection: '" + userInput + "'");
+            return;
+        }
         File file = new File(userInput + ".txt");
         readAndPrintFile(file);
     }
@@ -27,7 +31,9 @@ public class HelloWorld {
     }
 
     public static String readFile(File inputFile) throws IOException {
-        if (!inputFile.exists()) { throw new FileNotFoundException(); }
+        if (!inputFile.exists()) {
+            throw new FileNotFoundException();
+        }
 
         FileReader fileReader = new FileReader(inputFile);
         BufferedReader reader = new BufferedReader(fileReader);
@@ -38,5 +44,14 @@ public class HelloWorld {
 
     public static String readInput(InputStream input) throws IOException {
         return new BufferedReader(new InputStreamReader(input)).readLine();
+    }
+
+    public static boolean validateInput(String userInput) {
+        try {
+            int storyNumber = Integer.parseInt(userInput);
+            return (storyNumber >= 1 && storyNumber <= 4);
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

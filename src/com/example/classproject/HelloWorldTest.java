@@ -4,9 +4,7 @@ import org.junit.Test;
 
 import java.io.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class HelloWorldTest {
 
@@ -60,6 +58,38 @@ public class HelloWorldTest {
             assertTrue(output.toString().endsWith("story 1\n"));
         } catch (IOException e) {
             fail("exception: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public void testValidateReturnsTrueIfOk() {
+        String goodInput = "1";
+        assertTrue(HelloWorld.validateInput(goodInput));
+    }
+
+    @Test
+    public void testValidateDoesNotThrowForNonNumeric() {
+        String badInput = "hello";
+        assertFalse(HelloWorld.validateInput(badInput));
+    }
+
+    @Test
+    public void testValidateReturnsFalseIfOutOfStoryRange() {
+        String badInput = "5";
+        assertFalse(HelloWorld.validateInput(badInput));
+    }
+
+    @Test
+    public void runProgramPrintsAnErrorIfUserInputDoesNotValidate() {
+        ByteArrayInputStream input = getInputStream("b");
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        try {
+            HelloWorld.runProgram("story.txt", input);
+            assertTrue(output.toString().contains("Invalid selection: 'b'"));
+        } catch (IOException e) {
+            fail(e.getMessage());
         }
     }
 
