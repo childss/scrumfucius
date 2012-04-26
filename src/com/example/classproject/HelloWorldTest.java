@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.io.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 public class HelloWorldTest {
@@ -37,27 +38,8 @@ public class HelloWorldTest {
     }
 
     @Test
-    public void testMainPrintsOutFile() {
-        String[] args = new String[1];
-        args[0] = "dummy.txt";
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(output));
-
-        String inputData = "something";
-        ByteArrayInputStream input = new ByteArrayInputStream(inputData.getBytes());
-
-        try {
-            HelloWorld.runProgram(args[0], input);
-            assertEquals("this is some example text\n", output.toString());
-        } catch (Exception e) {
-            fail(e.getMessage());
-        }
-    }
-
-    @Test
-    public void canReadInputFromStream() {
-        String inputData = "something";
-        ByteArrayInputStream input = new ByteArrayInputStream(inputData.getBytes());
+    public void testCanReadInputFromStream() {
+        ByteArrayInputStream input = getInputStream("something");
 
         try {
             String result = HelloWorld.readInput(input);
@@ -65,6 +47,23 @@ public class HelloWorldTest {
         } catch (Exception e) {
             fail("exception" + e.getMessage());
         }
+    }
 
+    @Test
+    public void testPrintsCorrectStory() {
+        ByteArrayInputStream input = getInputStream("1");
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        try {
+            HelloWorld.runProgram("story.txt", input);
+            assertTrue(output.toString().endsWith("story 1\n"));
+        } catch (IOException e) {
+            fail("exception: " + e.getMessage());
+        }
+    }
+
+    private ByteArrayInputStream getInputStream(String inputStream) {
+        return new ByteArrayInputStream(inputStream.getBytes());
     }
 }
