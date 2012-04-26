@@ -12,14 +12,14 @@ public class HelloWorld {
 
     public static void runProgram(String filename, InputStream userInputStream) throws IOException {
         File storyFile = new File(filename);
-
-        readFile(storyFile);
-        System.out.print(_tale);
-        System.out.println();
+        readAndPrintFile(storyFile);
 
         String userInput = readInput(userInputStream);
-
         File file = new File(userInput + ".txt");
+        readAndPrintFile(file);
+    }
+
+    private static void readAndPrintFile(File file) throws IOException {
         readFile(file);
         System.out.print(_tale);
         System.out.println();

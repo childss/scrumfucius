@@ -39,8 +39,7 @@ public class HelloWorldTest {
 
     @Test
     public void testCanReadInputFromStream() {
-        String inputData = "something";
-        ByteArrayInputStream input = new ByteArrayInputStream(inputData.getBytes());
+        ByteArrayInputStream input = getInputStream("something");
 
         try {
             String result = HelloWorld.readInput(input);
@@ -48,13 +47,11 @@ public class HelloWorldTest {
         } catch (Exception e) {
             fail("exception" + e.getMessage());
         }
-
     }
 
     @Test
     public void testPrintsCorrectStory() {
-        String inputData = "1";
-        ByteArrayInputStream input = new ByteArrayInputStream(inputData.getBytes());
+        ByteArrayInputStream input = getInputStream("1");
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
 
@@ -64,5 +61,9 @@ public class HelloWorldTest {
         } catch (IOException e) {
             fail("exception: " + e.getMessage());
         }
+    }
+
+    private ByteArrayInputStream getInputStream(String inputStream) {
+        return new ByteArrayInputStream(inputStream.getBytes());
     }
 }
