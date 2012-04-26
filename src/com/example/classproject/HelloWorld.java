@@ -18,6 +18,11 @@ public class HelloWorld {
         System.out.println();
 
         String userInput = readInput(userInputStream);
+
+        File file = new File(userInput + ".txt");
+        readFile(file);
+        System.out.print(_tale);
+        System.out.println();
     }
 
     public static String readFile(File inputFile) throws IOException {
