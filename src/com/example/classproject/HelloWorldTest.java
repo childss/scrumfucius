@@ -54,11 +54,25 @@ public class HelloWorldTest {
         System.setOut(new PrintStream(output));
 
         try {
+            String text = readFile("story/1.txt");
             HelloWorld.runProgram("story/story.txt", input);
-            assertTrue(output.toString().endsWith("story 1\n"));
+//            assertEquals("", output.toString());
+            String outputString = output.toString();
+            assertTrue(outputString.contains(text));
         } catch (IOException e) {
             fail("exception: " + e.getMessage());
         }
+    }
+
+    private String readFile(String filename) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(new File(filename)));
+        String line;
+        StringBuilder builder = new StringBuilder();
+        while ((line = reader.readLine()) != null) {
+            builder.append(line + "\n");
+        }
+
+        return line;
     }
 
     @Test
@@ -86,7 +100,7 @@ public class HelloWorldTest {
         System.setOut(new PrintStream(output));
 
         try {
-            HelloWorld.runProgram("story.txt", input);
+            HelloWorld.runProgram("story/story.txt", input);
             assertTrue(output.toString().contains("Invalid selection: 'b'"));
         } catch (IOException e) {
             fail(e.getMessage());
