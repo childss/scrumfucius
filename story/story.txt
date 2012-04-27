@@ -14,4 +14,4 @@ Now it's time for you to join this team! Would you like to be:
 3) Everybody
 4) Somebody
 
-(type the number of your choice and hit enter)
+(Please type the number of your choice and hit enter.)
