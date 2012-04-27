@@ -12,7 +12,8 @@ public class HelloWorld {
 
     public static void runProgram(String filename, InputStream userInputStream) throws IOException {
         File storyFile = new File(filename);
-        readAndPrintFile(storyFile);
+        readFile(storyFile);
+        printText(_tale);
 
         System.out.print("Please type your selection: ");
         String userInput = readInput(userInputStream);
@@ -21,12 +22,13 @@ public class HelloWorld {
             return;
         }
         File file = new File("story/" + userInput + ".txt");
-        readAndPrintFile(file);
+        readFile(file);
+        printText(_tale);
     }
 
-    private static void readAndPrintFile(File file) throws IOException {
-        readFile(file);
-        System.out.print(_tale);
+    private static void printText(String text) throws IOException {
+
+        System.out.print(text);
         System.out.println();
     }
 
