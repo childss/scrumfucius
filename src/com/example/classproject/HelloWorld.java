@@ -17,15 +17,21 @@ public class HelloWorld {
 
         System.out.print("Please type your selection: ");
         String userInput = readInput(userInputStream);
-        if (!validateInput(userInput)) {
-            System.out.println("Invalid selection: '" + userInput + "'");
-            return;
+        while(!validateInput(userInput))
+        {
+            userInput = promptForInput(userInputStream);
         }
         File file = new File("story/" + userInput + ".txt");
         readFile(file);
         printText(_tale);
     }
 
+    public static String promptForInput(InputStream userInputStream)   throws IOException
+    {
+        System.out.println("That doesn't look right. Please try again.");
+        return readInput(userInputStream);
+
+    }
     private static void printText(String text) throws IOException {
 
         System.out.print(text);

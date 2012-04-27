@@ -106,8 +106,9 @@ public class HelloWorldTest {
         System.setOut(new PrintStream(output));
 
         try {
-            HelloWorld.runProgram("story/story.txt", input);
-            assertTrue(output.toString().contains("Invalid selection: 'b'"));
+            HelloWorld.promptForInput(input);
+            assertTrue(output.toString().contains("That doesn't look right. Please try again."));
+
         } catch (IOException e) {
             fail(e.getMessage());
         }
