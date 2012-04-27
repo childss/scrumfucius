@@ -35,6 +35,7 @@ public class HelloWorldTest {
         try {
             HelloWorld.runProgram("dummy.txt", input);
             String outputString = output.toString();
+//            assertEquals("", outputString);
             boolean contains = outputString.contains(text);
             assertTrue(contains);
         } catch (IOException e) {
