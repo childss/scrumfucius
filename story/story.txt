@@ -10,7 +10,6 @@ Somebody made sure that Everybody had a task to do, which Anybody could do as we
 1) Nobody
 2) Anybody
 3) Everybody
-
 4) Somebody
 
 (Please type the number of your choice and hit enter.)
