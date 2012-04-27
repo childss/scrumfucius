@@ -25,7 +25,7 @@ public class HelloWorldTest {
         ByteArrayInputStream input = getInputStream("1");
         String text = null;
         try {
-            text = readFile("test-stories/1.txt");
+            text = readFile("test-stories/1.1.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
