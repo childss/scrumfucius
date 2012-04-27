@@ -1,13 +1,6 @@
 
 Congrats! You were the quickest to learn the first lesson! 
-<<<<<<< HEAD
-
 A good team needs to be both collaborative and communicative. Nobody neither carried out his task, nor communicated with the team members about the task.
-
-=======
-A good team needs to be both collaborative and communicative. 
-Nobody neither carried out his task, nor communicated with the team members about the task.
->>>>>>> f9465f7053825f7fead198bf25e6b5c7532f10d3
 As Nobody, you would have *assumed* that other team members would do all the work. And you know what happens when you *assume* things?
 
 Think about what would've been a better option, and learn more about Somebody, Anybody, and Everybody in our next installment!
