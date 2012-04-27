@@ -8,7 +8,8 @@
     <!--This is the name of our distribution file -->
 
     <property name="junit.jar" value="${lib.dir}/junit4.8.2/junit-4.8.2.jar"/>
-    <property name="classpath" value="${junit.jar}"/>
+    <property name="commonslang.jar" value="${lib.dir}/commons-lang-2.6.jar"/>
+    <property name="classpath" value="${commonslang.jar};${junit.jar}"/>
 
     <target name="clean" description="Erase all generated files">
         <delete dir="${build.dir}" failonerror="true"/>
@@ -21,7 +22,7 @@
 
     <target name="test" depends="compile">
         <junit haltonfailure="true">
-            <classpath path="${junit.jar};${classes.dir}"/>
+            <classpath path="${junit.jar};${classes.dir};${commonslang.jar}"/>
             <formatter type="brief" usefile="false"/>
             <batchtest>
                 <fileset dir="${src.dir}">
@@ -42,6 +43,7 @@
                            value="com.example.classproject.HelloWorld"/>
             </manifest>
         </jar>
+        <copy file="${commonslang.jar}" tofile="commons-lang-2.6.jar" />
     </target>
 
     <target name="release" depends="clean, jar" description="Create release package">
