@@ -28,7 +28,7 @@ public class HelloWorldTest {
         File textFile = new File("story/dummy.txt");
         try {
             String output = HelloWorld.readFile(textFile);
-            assertEquals("this is some example text", output);
+            assertEquals("this is some example text"+System.getProperty("line.separator")+"line 2"+System.getProperty("line.separator"), output);
         } catch (Exception e) {
             fail("exception!: " + e.getMessage());
         }

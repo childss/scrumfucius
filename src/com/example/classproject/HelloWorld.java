@@ -38,8 +38,15 @@ public class HelloWorld {
         FileReader fileReader = new FileReader(inputFile);
         BufferedReader reader = new BufferedReader(fileReader);
 
-        _tale = reader.readLine();
-        return _tale;
+        StringBuffer contents = new StringBuffer();
+        String line = null;
+        while (( line = reader.readLine()) != null){
+            contents.append(line);
+            contents.append(System.getProperty("line.separator"));
+        }
+        _tale = contents.toString();
+         return _tale;
+
     }
 
     public static String readInput(InputStream input) throws IOException {
