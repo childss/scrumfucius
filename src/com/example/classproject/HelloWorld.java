@@ -11,8 +11,9 @@ public class HelloWorld {
     }
 
     public static void runProgram(String filename, InputStream userInputStream) throws IOException {
-        File storyFile = new File(filename);
-        readFile(storyFile);
+        Program program = new Program("story");
+
+        _tale = program.readFile(filename);
         printText(_tale, userInputStream);
 
         System.out.print("Please type your selection: ");
@@ -21,8 +22,8 @@ public class HelloWorld {
         {
             userInput = promptForInput(userInputStream);
         }
-        File file = new File("story/" + userInput + ".txt");
-        readFile(file);
+
+        _tale = program.readFile(userInput + ".txt");
         printText(_tale, userInputStream);
     }
 
@@ -46,25 +47,6 @@ public class HelloWorld {
             i++;
         }
         System.out.println();
-    }
-
-    public static String readFile(File inputFile) throws IOException {
-        if (!inputFile.exists()) {
-            throw new FileNotFoundException();
-        }
-
-        FileReader fileReader = new FileReader(inputFile);
-        BufferedReader reader = new BufferedReader(fileReader);
-
-        StringBuffer contents = new StringBuffer();
-        String line = null;
-        while (( line = reader.readLine()) != null){
-            contents.append(line);
-            contents.append(System.getProperty("line.separator"));
-        }
-        _tale = contents.toString();
-         return _tale;
-
     }
 
     public static String readInput(InputStream input) throws IOException {
