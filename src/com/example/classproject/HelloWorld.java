@@ -1,5 +1,7 @@
 package com.example.classproject;
 
+import sun.net.idn.StringPrep;
+
 import java.io.*;
 
 public class HelloWorld {
@@ -13,7 +15,7 @@ public class HelloWorld {
     public static void runProgram(String filename, InputStream userInputStream) throws IOException {
         File storyFile = new File(filename);
         readFile(storyFile);
-        printText(_tale);
+        printText(_tale, userInputStream);
 
         System.out.print("Please type your selection: ");
         String userInput = readInput(userInputStream);
@@ -23,12 +25,21 @@ public class HelloWorld {
         }
         File file = new File("story/" + userInput + ".txt");
         readFile(file);
-        printText(_tale);
+        printText(_tale, userInputStream);
     }
 
-    private static void printText(String text) throws IOException {
+    public static void printText(String text, InputStream userInputStream) throws IOException {
+        String[] lines = text.split("\n");
+        int i = 0;
+        for (String line : lines) {
+            if ((i) % 10 == 0 && i > 0) {
+                System.out.println("Please press enter to view more.");
+                readInput(userInputStream);
+            }
+            System.out.println(line);
 
-        System.out.print(text);
+            i++;
+        }
         System.out.println();
     }
 

@@ -113,6 +113,26 @@ public class HelloWorldTest {
         }
     }
 
+    @Test
+    public void testShouldPaginateText() {
+        ByteArrayInputStream input = getInputStream("\n");
+        String firstChunk = "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n";
+        String prompt = "Please press enter to view more.";
+        String secondChunk = "11\n12\n13\n14\n\n";
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        try {
+            HelloWorld.printText(firstChunk + secondChunk, input);
+        } catch (IOException e) {
+            fail(e.getMessage());
+        }
+
+
+        assertTrue(output.toString().startsWith(firstChunk));
+        assertTrue(output.toString().contains(prompt));
+        assertTrue(output.toString().endsWith(secondChunk));
+    }
+
     private ByteArrayInputStream getInputStream(String inputStream) {
         return new ByteArrayInputStream(inputStream.getBytes());
     }
