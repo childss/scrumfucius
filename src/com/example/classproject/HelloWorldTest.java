@@ -50,15 +50,21 @@ public class HelloWorldTest {
     @Test
     public void testPrintsCorrectStory() {
         ByteArrayInputStream input = getInputStream("1");
+        String text = null;
+        try {
+            text = readFile("story/1.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
 
         try {
-            String text = readFile("story/1.txt");
             HelloWorld.runProgram("story/story.txt", input);
-//            assertEquals("", output.toString());
             String outputString = output.toString();
-            assertTrue(outputString.contains(text));
+//            assertEquals("", outputString);
+            boolean contains = outputString.contains(text);
+            assertTrue(contains);
         } catch (IOException e) {
             fail("exception: " + e.getMessage());
         }
@@ -72,7 +78,7 @@ public class HelloWorldTest {
             builder.append(line + "\n");
         }
 
-        return line;
+        return builder.toString();
     }
 
     @Test
