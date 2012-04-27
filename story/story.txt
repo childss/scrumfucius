@@ -1,13 +1,16 @@
 
-Once upon a time, four individuals, named Nobody, Somebody, Anybody and Everybody were working on an important project.
+ **
+*  *
+*  *
+ ** nce upon a time, four individuals, named Nobody, Somebody, Anybody and Everybody were working on an important project.
 
 Somebody made sure that Everybody had a task to do, which Anybody could do as well. But something went wrong somewhere when Nobody forgot to do a particular task. This made Somebody really mad because Anybody could have done the job. Everybody thought that Anybody would take care of it while Nobody had hoped that either Everybody or Anybody would remember to do it. As things turned out Everybody blamed Somebody for assigning the task to Nobody, since Anybody or Everybody could have done it in the first place.
 
-Now it's time for you to join this team! Would you like to be:
+*** Now it's time for you to join this team! Would you like to be:
 1) Nobody
 2) Anybody
 3) Everybody
 4) Somebody
 
-(type the number of your choice and hit enter)
+(Please type the number of your choice and hit enter.)
 
