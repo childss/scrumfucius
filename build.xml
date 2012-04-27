@@ -41,6 +41,7 @@
             <manifest>
                 <attribute name="Main-Class"
                            value="com.example.classproject.HelloWorld"/>
+                <attribute name="Class-Path" value="commons-lang-2.6.jar" />
             </manifest>
         </jar>
         <copy file="${commonslang.jar}" tofile="commons-lang-2.6.jar" />
