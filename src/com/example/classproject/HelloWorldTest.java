@@ -3,6 +3,7 @@ package com.example.classproject;
 import org.junit.Test;
 
 import java.io.*;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
@@ -60,9 +61,8 @@ public class HelloWorldTest {
         System.setOut(new PrintStream(output));
 
         try {
-            HelloWorld.runProgram("story/story.txt", input);
+            HelloWorld.runProgram("story/dummy.txt", input);
             String outputString = output.toString();
-//            assertEquals("", outputString);
             boolean contains = outputString.contains(text);
             assertTrue(contains);
         } catch (IOException e) {
@@ -106,7 +106,7 @@ public class HelloWorldTest {
         System.setOut(new PrintStream(output));
 
         try {
-            HelloWorld.runProgram("story/story.txt", input);
+            HelloWorld.runProgram("story/dummy.txt", input);
             assertTrue(output.toString().contains("Invalid selection: 'b'"));
         } catch (IOException e) {
             fail(e.getMessage());
