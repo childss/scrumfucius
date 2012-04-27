@@ -1,7 +1,8 @@
 Once upon a time, four individuals, named Nobody, Somebody, Anybody 
 and Everybody were working on an important project.
-Somebody made sure that Everybody had a task to do, which Anybody could do as well.
-But something went wrong somewhere when Nobody forgot to do a particular task.
+Somebody made sure that Everybody had a task to do, 
+which Anybody could do as well. But something went wrong somewhere 
+when Nobody forgot to do a particular task.
 This made Somebody really mad because Anybody could have done the job.
 Everybody thought that Anybody would take care of it while
 Nobody had hoped that either Everybody or Anybody would remember to do it. 
