@@ -1,7 +1,5 @@
 package com.example.classproject;
 
-import sun.net.idn.StringPrep;
-
 import java.io.*;
 
 public class HelloWorld {
@@ -33,7 +31,8 @@ public class HelloWorld {
         int i = 0;
         for (String line : lines) {
             if ((i) % 10 == 0 && i > 0) {
-                System.out.println("Please press enter to view more.");
+                System.out.println();
+                System.out.println("(Please press enter to view more.)");
                 readInput(userInputStream);
             }
             System.out.println(line);
