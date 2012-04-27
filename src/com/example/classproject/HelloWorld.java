@@ -2,17 +2,23 @@ package com.example.classproject;
 
 import java.io.*;
 import java.util.Random;
+import org.apache.commons.lang.WordUtils;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class HelloWorld {
 
     static String _tale;
 
     public static void main(String[] args) throws IOException {
-        runProgram(args[0], System.in);
+        runProgram(args[0], "story", System.in);
     }
 
-    public static void runProgram(String filename, InputStream userInputStream) throws IOException {
-        Program program = new Program("story");
+    public static void runProgram(String filename, String storyRoot, InputStream userInputStream) throws IOException {
+        Program program = new Program(storyRoot);
 
         _tale = program.readFile(filename);
         printText(_tale, userInputStream);
@@ -28,6 +34,10 @@ public class HelloWorld {
         printText(_tale, userInputStream);
     }
 
+    public static String buildWrappedText(String string) {
+        return WordUtils.wrap(string, 60);
+    }
+
     public static String promptForInput(InputStream userInputStream)   throws IOException
     {
         System.out.println("That doesn't look right. Please try again.");
@@ -36,6 +46,7 @@ public class HelloWorld {
     }
 
     public static void printText(String text, InputStream userInputStream) throws IOException {
+        text = buildWrappedText(text);
         String[] lines = text.split("\n");
         int i = 0;
         for (String line : lines) {

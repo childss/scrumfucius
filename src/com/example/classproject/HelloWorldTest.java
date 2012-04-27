@@ -25,7 +25,7 @@ public class HelloWorldTest {
         ByteArrayInputStream input = getInputStream("1");
         String text = null;
         try {
-            text = readFile("story/1.txt");
+            text = readFile("test-stories/1.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,14 +33,14 @@ public class HelloWorldTest {
         System.setOut(new PrintStream(output));
 
         try {
-            HelloWorld.runProgram("dummy.txt", input);
+            HelloWorld.runProgram("dummy.txt", "test-stories", input);
             String outputString = output.toString();
-//            assertEquals("", outputString);
             boolean contains = outputString.contains(text);
             assertTrue(contains);
         } catch (IOException e) {
 //            fail("exception: " + e.getMessage());
             e.printStackTrace();
+            fail("exception");
         }
     }
 
@@ -126,6 +126,43 @@ public class HelloWorldTest {
         assertTrue(output.toString().startsWith(firstChunk));
         assertTrue(output.toString().contains(prompt));
         assertTrue(output.toString().endsWith(secondChunk));
+    }
+
+    @Test
+    public void testShouldWrapLongLines() {
+        String aLongLine = "This is a really long line of text that should be wrapped so that it doesn't wrap in a really dumb way.";
+        String result = HelloWorld.buildWrappedText(aLongLine);
+
+        String line1 = "This is a really long line of text that should be wrapped so";
+        String line2 = "that it doesn't wrap in a really dumb way.";
+
+        String[] lines = result.split("\n");
+        assertEquals(lines[0], line1);
+        assertEquals(lines[1], line2);
+    }
+
+    @Test
+    public void testPrintTextShouldWrapWords() {
+        ByteArrayInputStream input = getInputStream("\n");
+        String aLongLine = "This is a really long line of text that should be wrapped so that it doesn't wrap in a really dumb way.";
+        String line1 = "This is a really long line of text that should be wrapped so";
+        String line2 = "that it doesn't wrap in a really dumb way.";
+
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        try {
+            HelloWorld.printText(aLongLine, input);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail("exception");
+
+        }
+
+        String outputText = output.toString();
+        String expectedText = line1 + System.getProperty("line.separator") + line2;
+        assertTrue(outputText.contains(expectedText));
     }
 
     private ByteArrayInputStream getInputStream(String inputStream) {
