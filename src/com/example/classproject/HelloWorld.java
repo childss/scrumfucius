@@ -50,7 +50,7 @@ public class HelloWorld {
         String[] lines = text.split("\n");
         int i = 0;
         for (String line : lines) {
-            if ((i) % 10 == 0 && i > 0) {
+            if ((i) % 15 == 0 && i > 0) {
                 System.out.println();
                 System.out.println("(Please press enter to view more.)");
                 readInput(userInputStream);

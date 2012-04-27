@@ -111,9 +111,9 @@ public class HelloWorldTest {
     @Test
     public void testShouldPaginateText() {
         ByteArrayInputStream input = getInputStream("\n");
-        String firstChunk = "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n";
+        String firstChunk = "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n";
         String prompt = "Please press enter to view more.";
-        String secondChunk = "11\n12\n13\n14\n\n";
+        String secondChunk = "16\n17\n18\n\n";
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         try {
@@ -121,7 +121,6 @@ public class HelloWorldTest {
         } catch (IOException e) {
             fail(e.getMessage());
         }
-
 
         assertTrue(output.toString().startsWith(firstChunk));
         assertTrue(output.toString().contains(prompt));
