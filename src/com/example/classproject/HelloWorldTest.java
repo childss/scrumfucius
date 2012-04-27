@@ -54,6 +54,27 @@ public class HelloWorldTest {
 
         return builder.toString();
     }
+    @Test
+    public void testPseudoRandomSelectionOfFiles() {
+        String goodInput = "1";
+        boolean evenOption = false;
+        boolean oddOption = false;
+        for(int i=1; i<51; i++)
+        {
+            String filename = HelloWorld.getPseudoRandomFilename(goodInput);
+            if (filename.equals("1.1.txt")  )
+            {
+                oddOption = true;
+            }
+            if (filename.equals("1.2.txt")  )
+            {
+                evenOption = true;
+            }
+
+        }
+        assertTrue(oddOption && evenOption);
+
+    }
 
     @Test
     public void testValidateReturnsTrueIfOk() {

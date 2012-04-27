@@ -1,6 +1,7 @@
 package com.example.classproject;
 
 import java.io.*;
+import java.util.Random;
 
 public class HelloWorld {
 
@@ -23,7 +24,7 @@ public class HelloWorld {
             userInput = promptForInput(userInputStream);
         }
 
-        _tale = program.readFile(userInput + ".txt");
+        _tale = program.readFile(getPseudoRandomFilename(userInput));
         printText(_tale, userInputStream);
     }
 
@@ -60,5 +61,11 @@ public class HelloWorld {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    public static String getPseudoRandomFilename(String goodInput) {
+        Random random = new Random();
+        return random.nextInt() % 2 == 0 ?  goodInput+".2.txt" : goodInput+".1.txt";
+
     }
 }
